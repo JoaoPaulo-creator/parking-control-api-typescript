@@ -11,14 +11,15 @@ datasource db {
 }
 
 model ParkingSpot {
-  id                String   @id @default(uuid())
-  parkingSpotNumber String   @unique
-  licensePlate      String   @unique
-  brandCar          String
-  modelCar          String
-  colorCar          String
-  registrationDate  DateTime @default(now())
-  reponsibleName    String
-  apartment         String
-  block             String
+  id                     String   @id @default(uuid())
+  parkingSpotNumber      String   @unique
+  isParkingSpotAvailable Boolean
+  licensePlate           String   @unique
+  brandCar               String
+  modelCar               String
+  colorCar               String
+  registrationDate       DateTime @default(now())
+  reponsibleName         String
+  apartment              String
+  block                  String
 }

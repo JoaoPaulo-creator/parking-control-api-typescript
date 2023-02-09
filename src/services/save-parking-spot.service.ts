@@ -1,4 +1,4 @@
-import { prisma } from "../lib/prisma";
+import { store } from "../repository/create-parkingspot";
 
 export async function saveParkingSpotService({
   apartment,
@@ -10,16 +10,14 @@ export async function saveParkingSpotService({
   parkingSpotNumber,
   reponsibleName,
 }: any) {
-  return prisma.parkingSpot.create({
-    data: {
-      apartment,
-      block,
-      brandCar,
-      colorCar,
-      licensePlate,
-      modelCar,
-      parkingSpotNumber,
-      reponsibleName,
-    },
-  });
+  return await store(
+    apartment,
+    block,
+    brandCar,
+    colorCar,
+    licensePlate,
+    modelCar,
+    parkingSpotNumber,
+    reponsibleName
+  );
 }
