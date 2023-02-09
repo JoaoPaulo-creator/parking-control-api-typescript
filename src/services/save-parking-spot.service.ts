@@ -1,4 +1,4 @@
-import { store } from "../repository/create-parkingspot";
+import { store } from "../repository/create-parking-spot";
 
 export async function saveParkingSpotService({
   apartment,
