@@ -8,7 +8,7 @@ export async function saveParkingSpotService({
   licensePlate,
   modelCar,
   parkingSpotNumber,
-  reponsibleName,
+  responsibleName,
 }: any) {
   return await store(
     apartment,
@@ -18,6 +18,6 @@ export async function saveParkingSpotService({
     licensePlate,
     modelCar,
     parkingSpotNumber,
-    reponsibleName
+    responsibleName
   );
 }

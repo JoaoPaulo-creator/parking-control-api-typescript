@@ -1,12 +1,15 @@
 import { z } from "zod";
 
 export const parkingSpotPaylodBody = z.object({
-  parkingSpotNumber: z.string(),
+  parkingSpot: z.object({
+    number: z.number(),
+    isParkingSpotAvailable: z.boolean(),
+  }),
   licensePlate: z.string(),
   brandCar: z.string(),
   modelCar: z.string(),
   colorCar: z.string(),
-  reponsibleName: z.string(),
+  responsibleName: z.string(),
   apartment: z.string(),
   block: z.string(),
 });

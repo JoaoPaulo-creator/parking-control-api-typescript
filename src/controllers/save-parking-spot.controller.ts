@@ -1,8 +1,8 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { findLicensePlateService } from "../services/find-licesenplate.service";
-import { findParkingSpotNumberService } from "../services/find-parking-spot-number.service";
-import { saveParkingSpotService } from "../services/save-parking-spot.service";
 import { parkingSpotPaylodBody } from "../utils/create-spot-validator";
+
+import { prisma } from "../lib/prisma";
 
 export async function saveParkingSpot(
   request: FastifyRequest,
@@ -15,15 +15,12 @@ export async function saveParkingSpot(
     colorCar,
     licensePlate,
     modelCar,
-    parkingSpotNumber,
-    reponsibleName,
+    parkingSpot,
+    responsibleName,
   } = parkingSpotPaylodBody.parse(request.body);
 
   try {
     const licenseIsRegistered = await findLicensePlateService(licensePlate);
-    const pakingSpotNumberIsOccupied = await findParkingSpotNumberService(
-      parkingSpotNumber
-    );
 
     if (licenseIsRegistered) {
       return reply
@@ -31,24 +28,25 @@ export async function saveParkingSpot(
         .send({ message: "A license plate is already informed" });
     }
 
-    if (pakingSpotNumberIsOccupied) {
-      return reply
-        .code(422)
-        .send({ message: "Parking Spot is currently occupied" });
-    }
-
-    const createParkingSpot = await saveParkingSpotService({
-      apartment,
-      block,
-      brandCar,
-      colorCar,
-      licensePlate,
-      modelCar,
-      parkingSpotNumber,
-      reponsibleName,
+    const createParkingSpot = await prisma.parkingSpot.create({
+      data: {
+        apartment,
+        block,
+        brandCar,
+        colorCar,
+        licensePlate,
+        modelCar,
+        parkingSpot: {
+          create: {
+            number: parkingSpot.number,
+            isParkingSpotAvailable: parkingSpot.isParkingSpotAvailable,
+          },
+        },
+        responsibleName,
+      },
     });
 
-    return reply.code(201).send(createParkingSpot);
+    return reply.code(201).send({ ...createParkingSpot, parkingSpot });
   } catch (error) {
     console.error(error);
   }

@@ -11,20 +11,23 @@ datasource db {
 }
 
 model ParkingSpot {
-  id                String   @id @default(uuid())
-  parkingSpotNumber String   @unique
-  licensePlate      String   @unique
-  brandCar          String
-  modelCar          String
-  colorCar          String
-  registrationDate  DateTime @default(now())
-  reponsibleName    String
-  apartment         String
-  block             String
+  id               String          @id @default(uuid())
+  parkingSpot      ParkingNumber[]
+  licensePlate     String          @unique
+  brandCar         String
+  modelCar         String
+  colorCar         String
+  registrationDate DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  responsibleName  String
+  apartment        String
+  block            String
 }
 
 model ParkingNumber {
-  id                     String  @id @default(uuid())
-  number                 Int     @unique
-  isParkingSpotAvailable Boolean @default(true)
+  id                     String       @id @default(uuid())
+  number                 Int          @unique
+  isParkingSpotAvailable Boolean      @default(true)
+  ParkingSpot            ParkingSpot? @relation(fields: [parkingSpotId], references: [id])
+  parkingSpotId          String?
 }

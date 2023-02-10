@@ -8,7 +8,7 @@ export async function store(
   licensePlate: string,
   modelCar: string,
   parkingSpotNumber: string,
-  reponsibleName: string
+  responsibleName: string
 ) {
   const save = await prisma.parkingSpot.create({
     data: {
@@ -19,7 +19,7 @@ export async function store(
       licensePlate: licensePlate,
       modelCar: modelCar,
       parkingSpotNumber: parkingSpotNumber,
-      reponsibleName: reponsibleName,
+      reponsibleName: responsibleName,
     },
   });
   return save;
