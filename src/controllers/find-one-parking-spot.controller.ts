@@ -6,11 +6,19 @@ const params = z.object({
   id: z.string(),
 });
 
+interface ErrorProps {
+  message: Error;
+}
+
 export async function findOneParkingSpotController(
   request: FastifyRequest,
   reply: FastifyReply
 ) {
-  const { id } = params.parse(request.params);
-  const findId = await getOneParkingSpotsService(id);
-  return reply.code(200).send(findId);
+  try {
+    const { id } = params.parse(request.params);
+    const findId = await getOneParkingSpotsService(id);
+    return reply.code(200).send(findId);
+  } catch (error) {
+    return reply.code(404).send(error);
+  }
 }

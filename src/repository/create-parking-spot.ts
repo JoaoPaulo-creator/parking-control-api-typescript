@@ -1,5 +1,10 @@
 import { prisma } from "../lib/prisma";
 
+export interface ParkingSpotProps {
+  number: number;
+  isParkingSpotAvailable: boolean;
+}
+
 export async function store(
   apartment: string,
   block: string,
@@ -7,19 +12,24 @@ export async function store(
   colorCar: string,
   licensePlate: string,
   modelCar: string,
-  parkingSpotNumber: string,
+  parkingSpot: ParkingSpotProps, //{ number: number; isParkingSpotAvailable: boolean },
   responsibleName: string
 ) {
   const save = await prisma.parkingSpot.create({
     data: {
-      apartment: apartment,
-      block: block,
-      brandCar: brandCar,
-      colorCar: colorCar,
-      licensePlate: licensePlate,
-      modelCar: modelCar,
-      parkingSpotNumber: parkingSpotNumber,
-      reponsibleName: responsibleName,
+      apartment,
+      block,
+      brandCar,
+      colorCar,
+      licensePlate,
+      modelCar,
+      parkingSpot: {
+        create: {
+          number: parkingSpot.number,
+          isParkingSpotAvailable: parkingSpot.isParkingSpotAvailable,
+        },
+      },
+      responsibleName,
     },
   });
   return save;
