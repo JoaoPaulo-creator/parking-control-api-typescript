@@ -1,4 +1,5 @@
 import { ParkingSpotProps, store } from "../repository/create-parking-spot";
+import { findLicensePlateService } from "./find-licesenplate.service";
 
 export interface ServiceProps {
   apartment: string;
@@ -21,14 +22,24 @@ export async function saveParkingSpotService({
   parkingSpot,
   responsibleName,
 }: ServiceProps) {
-  return await store(
-    apartment,
-    block,
-    brandCar,
-    colorCar,
-    licensePlate,
-    modelCar,
-    parkingSpot,
-    responsibleName
-  );
+  const licenseIsRegistered = await findLicensePlateService(licensePlate);
+
+  if (licenseIsRegistered) {
+    throw new Error("License plate is already in use");
+  }
+
+  if (parkingSpot.isParkingSpotAvailable) {
+    return await store(
+      apartment,
+      block,
+      brandCar,
+      colorCar,
+      licensePlate,
+      modelCar,
+      parkingSpot,
+      responsibleName
+    );
+  } else {
+    throw new Error("Spot number is not available");
+  }
 }

@@ -6,10 +6,6 @@ const params = z.object({
   id: z.string(),
 });
 
-interface ErrorProps {
-  message: Error;
-}
-
 export async function findOneParkingSpotController(
   request: FastifyRequest,
   reply: FastifyReply
