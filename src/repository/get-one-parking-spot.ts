@@ -5,5 +5,8 @@ export async function index(id: string) {
     where: {
       id: id,
     },
+    include: {
+      parkingSpot: true,
+    },
   });
 }
