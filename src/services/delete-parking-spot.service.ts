@@ -1,8 +1,8 @@
 import { deleteSpot } from "../repository/delete-parking-spot";
-import { getOneParkingSpotsService } from "./find-one-parkingspot.service";
+import { findOneParkingSpotsService } from "./find-one-parkingspot.service";
 
 export async function deleteParkingSpotService(id: string) {
-  await getOneParkingSpotsService(id);
+  await findOneParkingSpotsService(id);
 
   const parkingSport = await deleteSpot(id);
 

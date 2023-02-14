@@ -1,6 +1,6 @@
 import { index } from "../repository/get-one-parking-spot";
 
-export async function getOneParkingSpotsService(id: string) {
+export async function findOneParkingSpotsService(id: string) {
   const findSpot = await index(id);
 
   if (!findSpot) {
