@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { saveParkingSpotService } from "../services/save-parking-spot.service";
-import { parkingSpotPaylodBody } from "../utils/create-spot-validator";
+import { saveParkingSpotService } from "../../services/save-parking-spot.service";
+import { parkingSpotPaylodBody } from "../../utils/create-spot-validator";
 
 export async function saveParkingSpotController(
   request: FastifyRequest,

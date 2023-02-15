@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
-import { deleteParkingSpotService } from "../services/delete-parking-spot.service";
+import { deleteParkingSpotService } from "../../services/delete-parking-spot.service";
 
 export async function deleteParkingSpotController(
   request: FastifyRequest,

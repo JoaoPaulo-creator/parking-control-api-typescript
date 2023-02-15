@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest --config vite.config.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
     "prisma": "^4.10.0",
     "tsx": "^3.12.3",
     "typescript": "^4.9.5",
+    "vitest": "^0.28.5",
     "zod": "^3.20.2",
     "zod-error": "^1.1.1"
   },
