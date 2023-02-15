@@ -3,7 +3,7 @@ import { deleteParkingSpotController } from "./controllers/delete-parking-spot/d
 import { findOneParkingSpotController } from "./controllers/find-one-parking-spot/find-one-parking-spot.controller";
 import { getCars } from "./controllers/get-parking-spot/get-parking-spot.controller";
 import { saveParkingSpotController } from "./controllers/save-parking-spot/save-parking-spot.controller";
-import { updateParkingSpotController } from "./controllers/save-parking-spot/update-parking-spot-.controller";
+import { updateParkingSpotController } from "./controllers/update-parking-spot/update-parking-spot-.controller";
 
 export async function routes(app: FastifyInstance) {
   app.get("/", getCars);
