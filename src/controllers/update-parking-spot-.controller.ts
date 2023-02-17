@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
-import { updateParkingSpot } from "../../services/update-paking-spot.service";
+import { updateParkingSpot } from "../services/update-paking-spot.service";
 
 export async function updateParkingSpotController(
   request: FastifyRequest,

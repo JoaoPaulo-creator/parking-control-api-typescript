@@ -28,7 +28,7 @@ export async function saveParkingSpotService({
     throw new Error("License plate is already in use");
   }
 
-  if (parkingSpot.isParkingSpotAvailable) {
+  if (parkingSpot.isParkingSpotAvailable && parkingSpot.number) {
     return await store(
       apartment,
       block,
