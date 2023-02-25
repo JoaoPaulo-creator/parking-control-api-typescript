@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "populate": "tsx watch test/populateDB.ts",
+    "delete:parking": "tsx watch test/deleteParkingSpot.ts",
+    "delete:number": "tsx watch test/deleteSpotNumber.ts"
   },
   "keywords": [],
   "author": "",
