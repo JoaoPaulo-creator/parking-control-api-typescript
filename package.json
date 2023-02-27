@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsx watch src/index.ts",
+    "test": "vitest --config vitest.config.ts",
     "populate": "tsx watch test/populateDB.ts",
     "delete:parking": "tsx watch test/deleteParkingSpot.ts",
     "delete:number": "tsx watch test/deleteSpotNumber.ts"
@@ -16,9 +17,13 @@
   "devDependencies": {
     "@fastify/cors": "^8.2.0",
     "@types/node": "^18.13.0",
+    "@types/supertest": "^2.0.12",
+    "axios": "^1.3.4",
     "prisma": "^4.10.0",
+    "supertest": "^6.3.3",
     "tsx": "^3.12.3",
     "typescript": "^4.9.5",
+    "vitest": "^0.29.1",
     "zod": "^3.20.2",
     "zod-error": "^1.1.1"
   },
