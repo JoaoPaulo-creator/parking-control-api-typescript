@@ -8,6 +8,6 @@ export default defineConfig({
       "**/node_modules/**",
       "**/dist/**",
     ],
-    include: ["tests/**/*.spec.ts", "packages/template/*"],
+    include: ["tests/**/*.spec.ts"],
   },
 });

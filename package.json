@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsx watch src/index.ts",
-    "test": "vitest --config vitest.config.ts",
+    "test": "npx vitest --config vitest.config.ts",
     "populate": "tsx watch test/populateDB.ts",
     "delete:parking": "tsx watch test/deleteParkingSpot.ts",
     "delete:number": "tsx watch test/deleteSpotNumber.ts"
