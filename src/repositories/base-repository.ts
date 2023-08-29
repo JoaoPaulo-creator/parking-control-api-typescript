@@ -9,7 +9,7 @@ class BaseRepository<T extends IEntity> implements IBaseRepository<T> {
     @inject(InMemoryDB) private inMemoryDB!: InMemoryDB;
 
     protected get USERDB(): T[] {
-        return [...this.inMemoryDB.getUserDB()] as T[];
+        return [...this.inMemoryDB.getParkingSpotDB()] as T[];
     }
 
     create(item: T): T | null {
@@ -18,12 +18,12 @@ class BaseRepository<T extends IEntity> implements IBaseRepository<T> {
             throw new Error(`Object with id ${item.id} already exists`);
         }
 
-        this.inMemoryDB.getUserDB().push(item);
+        this.inMemoryDB.getParkingSpotDB().push(item);
         return item;
     }
 
     delete(id: string): boolean {
-        const db = this.inMemoryDB.getUserDB();
+        const db = this.inMemoryDB.getParkingSpotDB();
         const index: number = db.findIndex((item) => item.id === id);
 
         if (index !== -1) {
@@ -34,7 +34,7 @@ class BaseRepository<T extends IEntity> implements IBaseRepository<T> {
     }
 
     update(item: T): T | null {
-        const db = this.inMemoryDB.getUserDB();
+        const db = this.inMemoryDB.getParkingSpotDB();
         const index: number = db.findIndex((i) => i.id === item.id);
 
         if (index !== -1) {
